@@ -14,16 +14,18 @@ public class TestBallsSimulator {
 }
 
 class BallsSimulator implements Simulable{
-    Balls b = new Balls(new ArrayList<Point>(Arrays.asList(new Point(0,100), new Point(100,100), new Point(200, 100))));
     GUISimulator gui;
+    Balls b;
 
 
     public BallsSimulator(GUISimulator gui){
         this.gui = gui;
+        this.b = new Balls(new ArrayList<Point>(Arrays.asList(new Point(251,100),
+                new Point(100,100), new Point(200, 100), new Point(23,300), new Point(3,88))), (int) gui.getWidth(), (int) gui.getHeight());
     }
     @Override
     public void next(){
-        b.translate(10,10);
+        b.translate();
         draw();
         System.out.println(b);
     }
