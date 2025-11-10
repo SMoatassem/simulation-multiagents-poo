@@ -15,12 +15,12 @@ public class TestBalls{
 
         Balls B = new Balls(L, 1000, 1000);
         System.out.println(B);
-//        B.translate(5,2);
-//        System.out.println(B);
-//        B.translate(10,13);
-//        System.out.println(B);
-//        B.translate(-5,-2);
-//        System.out.println(B);
+        B.translate();
+        System.out.println(B);
+        B.translate();
+        System.out.println(B);
+        B.translate();
+        System.out.println(B);
 
         B.reInit();
         System.out.println(B);
@@ -28,16 +28,16 @@ public class TestBalls{
 }
 
 class Balls {
-    ArrayList<Point> Lballs;
-    ArrayList<Point> PosInit = new ArrayList<>();
-    ArrayList<Point> dxParPoint = new ArrayList<>();
-    int width;
-    int height;
+    private ArrayList<Point> balls;
+    private ArrayList<Point> initialPos = new ArrayList<>();
+    private ArrayList<Point> dxParPoint = new ArrayList<>();
+    private int width;
+    private int height;
 
-    public Balls(ArrayList<Point> Lballs, int width, int height){
-        SaveInit(Lballs);
-        this.Lballs = Lballs;
-        for (int i = 0; i < Lballs.size(); i++){
+    public Balls(ArrayList<Point> balls, int width, int height){
+        SaveInit(balls);
+        this.balls = balls;
+        for (int i = 0; i < balls.size(); i++){
             dxParPoint.add(new Point(10,10));
         }
         this.width = width;
@@ -46,12 +46,12 @@ class Balls {
 
     public void SaveInit(ArrayList<Point> Lballs){
         for (Point p : Lballs){
-            PosInit.add(new Point((int) p.getX(), (int) p.getY()));
+            initialPos.add(new Point((int) p.getX(), (int) p.getY()));
         }
     }
     public void translate(){
-        for (int i = 0; i < Lballs.size(); i++){
-            Point ball = Lballs.get(i);
+        for (int i = 0; i < balls.size(); i++){
+            Point ball = balls.get(i);
             Point coordTranslation = dxParPoint.get(i);
             if (ball.getY() + coordTranslation.getY() > height - 100 || ball.getY() + coordTranslation.getY() < 0){
                 coordTranslation.y *= -1;
@@ -65,8 +65,8 @@ class Balls {
     }
 
     public void reInit(){
-        Iterator<Point> iter_pt = PosInit.iterator();
-        for (Point p : Lballs){
+        Iterator<Point> iter_pt = initialPos.iterator();
+        for (Point p : balls){
             Point pt_init = iter_pt.next();
             p.setLocation(pt_init);
         }
@@ -79,13 +79,15 @@ class Balls {
 
     @Override
     public String toString(){
-        String res = "";
-        System.out.print("[");
-        for (Point ball : this.Lballs){
+        String res = "[";
+        for (Point ball : this.balls){
             res += ball.toString();
         }
         res += "]";
         return res;
     }
 
+    ArrayList<Point> getArray(){
+        return this.balls;
+    }
 }

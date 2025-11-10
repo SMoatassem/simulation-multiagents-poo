@@ -14,8 +14,8 @@ public class TestBallsSimulator {
 }
 
 class BallsSimulator implements Simulable{
-    GUISimulator gui;
-    Balls b;
+    private GUISimulator gui;
+    private Balls b;
 
 
     public BallsSimulator(GUISimulator gui){
@@ -39,7 +39,7 @@ class BallsSimulator implements Simulable{
 
     public void draw(){
         gui.reset();
-        for (Point ball : b.Lballs){
+        for (Point ball : b.getArray()){
             gui.addGraphicalElement(new Oval((int) ball.getX(), (int) ball.getY(),
                     Color.decode("#1f77b4"), Color.decode("#1f77b4"), 20, 20));
         }
