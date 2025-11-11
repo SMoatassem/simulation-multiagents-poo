@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class SchellingGrille extends Grille{
     private ArrayList<int[]> cellsVacantes = new ArrayList<int[]>();
@@ -22,31 +23,37 @@ public class SchellingGrille extends Grille{
         int[][] newGrille = new int[n+2][m+2]; // Grille temporaire
         for (int i = 1; i < n+1; i++){
             for (int j = 1; j < m+1; j++){
+
                 int[][] couplesAparcourir = { {i-1, j}, {i-1, j-1}, {i-1, j+1}, {i, j-1}, {i+1, j-1},
                         {i+1, j}, {i+1, j+1}, {i, j+1}};
                 int etat = grille[i][j];
-                int cptEtatk = 0;
-                for (int p = 0; p < 8; p++){
-                    int idxI = couplesAparcourir[p][0];
-                    int idxJ = couplesAparcourir[p][1];
-                    boolean diff = (grille[idxI][idxJ] != etat);
-                    // ajout de %nombreEtats car sinon on ne revient jamais à 0
-                    int voisin = grille[idxI][idxJ];
-                    if (voisin != 0 && voisin != etat) {
-                        cptEtatk++;
-                    }                }
-                if (cptEtatk >= K){
-                    newGrille[i][j] = 0;
-                    int[] couple = {i,j};
-                    cellsVacantes.add(couple);
-                    int[] nvEmplacement = cellsVacantes.get(0);
-                    cellsVacantes.remove(0); // faut s'assurer qu'on a au moins un vide au début
+                if (etat != 0){
+                    int cptEtatk = 0;
+                    for (int p = 0; p < 8; p++){
+                        int idxI = couplesAparcourir[p][0];
+                        int idxJ = couplesAparcourir[p][1];
+                        // ajout de %nombreEtats car sinon on ne revient jamais à 0
+                        int voisin = grille[idxI][idxJ];
+                        if (voisin != 0 && voisin != etat) {
+                            cptEtatk++;
+                        }                }
+                    if (cptEtatk >= K){
+                        newGrille[i][j] = 0;
+                        int[] couple = {i,j};
+                        cellsVacantes.add(couple);
+                        int[] nvEmplacement = cellsVacantes.get(0);
+                        cellsVacantes.remove(0); // faut s'assurer qu'on a au moins un vide au début
 
-                    newGrille[nvEmplacement[0]][nvEmplacement[1]] = etat;
+                        newGrille[nvEmplacement[0]][nvEmplacement[1]] = etat;
+                        System.out.println("on a cptEtatk >= K, le nouvel emplacement" +
+                                " est: " + Arrays.toString(nvEmplacement) + " le i est égal" +
+                                "à " + i + " et le j à " + j);
+                    }
+                    else{
+                        newGrille[i][j] = etat;
+                    }
                 }
-                else{
-                    newGrille[i][j] = etat;
-                }
+
             }
 
             }

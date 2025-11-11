@@ -32,7 +32,7 @@ public class Grille {
         // lignes 1 à 3
         for (int i = 1; i <= 3; i++) {
             grille[i][1] = 0; grille[i][2] = 0; grille[i][3] = 0;
-            grille[i][4] = 1; grille[i][5] = 1; grille[i][6] = 1;
+            grille[i][4] = 2; grille[i][5] = 3; grille[i][6] = 2;
             grille[i][7] = 2; grille[i][8] = 2; grille[i][9] = 2;
             // grille[i][10] = 0; // reste 0
         }
@@ -41,7 +41,7 @@ public class Grille {
         for (int i = 4; i <= 6; i++) {
             grille[i][1] = 3; grille[i][2] = 3; grille[i][3] = 3;
             grille[i][4] = 0; grille[i][5] = 0; grille[i][6] = 0;
-            grille[i][7] = 1; grille[i][8] = 1; grille[i][9] = 1;
+            grille[i][7] = 3; grille[i][8] = 2; grille[i][9] = 2;
             // grille[i][10] = 0;
         }
 
@@ -55,7 +55,7 @@ public class Grille {
 
         // ligne 10 (zone active du bas) : on met un peu de variété aussi
         grille[10][1] = 0;
-        grille[10][2] = 1;
+        grille[10][2] = 3;
         grille[10][3] = 2;
         grille[10][4] = 3;
         grille[10][5] = 0;

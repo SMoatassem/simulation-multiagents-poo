@@ -9,7 +9,7 @@ import java.util.Map;
 public class TestSchelling{
     public static void main(String[] argv){
         GUISimulator gui = new GUISimulator (500 , 550 , Color . BLACK ) ;
-        gui.setSimulable (new SchellingSimulator (gui, 1)) ;
+        gui.setSimulable (new SchellingSimulator (gui, 2)) ;
     }
 }
 
@@ -47,7 +47,7 @@ class SchellingSimulator implements Simulable {
         gui.reset();
         for (int i = 1; i < sGrille.getn() +1; i++){
             for (int j =1; j < sGrille.getm() + 1;j++){
-                gui.addGraphicalElement(new Rectangle(j*50, i*50,couleurEtat.get(sGrille.getelement(i,j)),
+                gui.addGraphicalElement(new Rectangle(j*50, i*50,Color.BLACK,
                         couleurEtat.get(sGrille.getelement(i,j)), 50, 50));
 
             }

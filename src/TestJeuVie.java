@@ -53,7 +53,7 @@ class GrilleSimulator implements Simulable{
         gui.reset();
         for (int i = 1; i < grille.getn() +1; i++){
             for (int j =1; j < grille.getm() + 1;j++){
-                gui.addGraphicalElement(new Rectangle(j*50, i*50,couleurEtat.get(grille.getelement(i,j)),
+                gui.addGraphicalElement(new Rectangle(j*50, i*50,Color.BLACK,
                         couleurEtat.get(grille.getelement(i,j)), 50, 50));
 
             }
