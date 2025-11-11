@@ -21,7 +21,8 @@ class BallsSimulator implements Simulable{
     public BallsSimulator(GUISimulator gui){
         this.gui = gui;
         this.b = new Balls(new ArrayList<Point>(Arrays.asList(new Point(251,100),
-                new Point(100,100), new Point(200, 100), new Point(23,300), new Point(3,88))), (int) gui.getWidth(), (int) gui.getHeight());
+                new Point(100,100), new Point(200, 100), new Point(23,300),
+                new Point(3,88))), (int) gui.getWidth(), (int) gui.getHeight());
     }
     @Override
     public void next(){
