@@ -1,10 +1,10 @@
 import java.util.Arrays;
 
 public class Grille {
-    private int[][] grille;
-    private int[][] initialeGrille;
-    private int n;
-    private int m;
+    protected int[][] grille;
+    protected int[][] initialeGrille;
+    protected int n;
+    protected int m;
 
     public Grille(int n ,int m){
         this.n = n;
@@ -132,7 +132,7 @@ public class Grille {
             }
         }
         for (int p = 0; p < n+2; p++){
-            for (int q = 0; q < n+2; q++){
+            for (int q = 0; q < m+2; q++){
                 grille[p][q] = newGrille[p][q];
             }
         }
